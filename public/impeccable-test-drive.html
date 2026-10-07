@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tally - how a list stays short</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      :root {
+        --paper: #fbf8f2;
+        --card: #ffffff;
+        --ink: #1f2421;
+        --accent: #2f5d50;
+        --line: #e4ded2;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        line-height: 1.5;
+      }
+      main {
+        max-width: 36rem;
+        margin: 0 auto;
+        padding: 4rem 0;
+      }
+      h1 {
+        margin: 0 0 1rem;
+        font-family: Fraunces, Georgia, serif;
+        font-weight: 600;
+        font-size: 2.5rem;
+        line-height: 1.1;
+        /* Intentional, for Impeccable's test drive: gradient text on the heading. */
+        background: linear-gradient(90deg, #2f5d50, #c026d3);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .intro {
+        /* Intentional, for Impeccable's test drive: body text flush with the viewport edges, no background. */
+        margin: 0 -1.25rem 1.5rem;
+        padding: 0;
+        /* Intentional, for Impeccable's test drive: light grey text, well under 4.5:1 contrast. */
+        color: #b8b8b8;
+      }
+      .tips {
+        margin: 0 1.25rem 1.5rem;
+        padding: 1rem 1.25rem;
+        list-style: none;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--card);
+      }
+      .tips li + li {
+        margin-top: 0.5rem;
+      }
+      .meter {
+        height: 0.5rem;
+        margin: 0 1.25rem 1.5rem;
+        width: 40%;
+        border-radius: 6px;
+        background: var(--accent);
+        /* Intentional, for Impeccable's test drive: a transition on a layout property (width). */
+        transition: width 0.3s;
+      }
+      .meter:hover {
+        width: 100%;
+      }
+      .back {
+        margin: 0 1.25rem;
+        /* Intentional, for Impeccable's test drive: link text under the 11px floor. */
+        font-size: 10px;
+        /* Intentional, for Impeccable's test drive: a colour that is not in DESIGN.md's palette. */
+        color: #e11d48;
+      }
+      h1,
+      .tips {
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>How a list stays short</h1>
+      <p class="intro">
+        A list is only useful while you can see all of it. Tally keeps one column of things that need doing today, so
+        anything that does not fit is a sign to finish something first.
+      </p>
+      <ul class="tips">
+        <li>Add an item the moment you think of it.</li>
+        <li>Tick it off when it is done.</li>
+        <li>Remove what no longer matters.</li>
+      </ul>
+      <div class="meter" aria-hidden="true"></div>
+      <a class="back" href="/">Back to your list</a>
+    </main>
+  </body>
+</html>
