@@ -1,0 +1,11 @@
+# Netlify serves the static build; Supabase is the whole backend.
+# Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY under Site configuration > Environment variables.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Single-page app: every path gets index.html.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
