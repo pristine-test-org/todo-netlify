@@ -10,7 +10,7 @@ Live site: https://candid-dusk-e3db1e.netlify.app/
 
 - **Vite + React 19 + TypeScript**, plain CSS. The build is a static `dist/` folder.
 - **Supabase** for storage: one `todos` table (`id`, `title`, `done`, `created_at`), read and
-  written from the browser with `@supabase/supabase-js` and the public anon key.
+  written from the browser with `@supabase/supabase-js` and the public publishable key.
 - **Netlify** hosts `dist/` (`netlify.toml`), with a Deploy Preview for every pull request.
 
 ## Supabase
@@ -19,7 +19,7 @@ The app uses the team's existing Supabase project:
 
 - Project URL: `https://hszqtfynyogshhltamep.supabase.co` (ref `hszqtfynyogshhltamep`)
 - Anon key: not in this repo. Copy it from the Supabase dashboard → the project →
-  **Project Settings → API** (on newer dashboards **API Keys → Legacy API keys → anon public**).
+  **Project Settings → API** (on newer dashboards **API Keys → Legacy API keys → Publishable key**).
   It is safe to ship to the browser; row level security decides what it can do.
 
 The `todos` table already exists on that project, so there is nothing to apply. If the project
@@ -44,7 +44,7 @@ storing anything private.
 
 ```bash
 npm install
-cp .env.example .env.local   # then paste the anon key
+cp .env.example .env.local   # then paste the publishable key
 npm run dev                  # http://localhost:5173
 ```
 
@@ -61,7 +61,7 @@ npm run dev                  # http://localhost:5173
 | Name | Value |
 | --- | --- |
 | `VITE_SUPABASE_URL` | `https://hszqtfynyogshhltamep.supabase.co` |
-| `VITE_SUPABASE_ANON_KEY` | the project's anon key (see above) |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | the project's publishable key (see above) |
 
 Vite bakes both into the bundle at build time, so set them on the host **before** the first build
 and redeploy after changing them. Without them the app still loads and says what is missing.
@@ -71,12 +71,12 @@ and redeploy after changing them. Without them the app still loads and says what
 `netlify.toml` already sets the build command (`npm run build`), the publish directory (`dist`)
 and the single-page-app fallback.
 
-1. Copy the anon key (see **Supabase** above). The table is already there.
+1. Copy the publishable key (see **Supabase** above). The table is already there.
 2. In Netlify: **Add new project → Import an existing project → GitHub**, pick this repository.
    Leave the build settings as Netlify reads them from `netlify.toml`.
 3. Before the first deploy, open **Environment variables** (on the import screen, or later under
    **Site configuration → Environment variables**) and add `VITE_SUPABASE_URL` and
-   `VITE_SUPABASE_ANON_KEY` with the values above, for all deploy contexts.
+   `VITE_SUPABASE_PUBLISHABLE_KEY` with the values above, for all deploy contexts.
 4. Deploy. Pull requests get a Deploy Preview URL automatically.
 5. Put the site URL in the **Live site** line at the top of this README.
 
