@@ -149,6 +149,10 @@ export default function App() {
           ))}
         </ul>
       )}
+
+      <p className="tip-link">
+        <a href="/impeccable-test-drive.html">How a list stays short</a>
+      </p>
     </main>
   );
 }
